@@ -1,0 +1,41 @@
+<form *ngIf="submit" #loginForm='ngForm' (ngSubmit)="getValue()">
+  <label for="emp">Choose an Employee:&nbsp;</label>
+  <select id="emp" name="emp" [(ngModel)]="username">
+    <option *ngFor="let value of values" value={{value.username}}>{{value.name}}</option>
+  </select>
+
+  <button class="btn btn-success" type="submit">&nbsp;Submit</button>
+</form>
+
+<div *ngIf="!submit">
+  <p>Name: {{value.name}}</p>
+  <label for="decide">Food: {{value.foodAmount}}&nbsp;</label>
+  <button class="btn btn-success" type="submit" (click)="downloadFile(pathFood)">Download</button>
+  <select id="decide" name="decide" [(ngModel)]="response.food">
+    <option value="accept">Accept</option>
+    <option value="decline">Decline</option>
+  </select><br><br>
+  <label for="decide">Fuel: {{value.fuelAmount}}&nbsp;</label>
+  <button class="btn btn-success" type="submit" (click)="downloadFile(pathFuel)">Download</button>
+  <select id="decide" name="decide" [(ngModel)]="response.fuel">
+    <option value="accept">Accept</option>
+    <option value="decline">Decline</option>
+  </select><br><br>
+  <label for="decide">HRA: {{value.hraAmount}}&nbsp;</label>
+  <button class="btn btn-success" type="submit" (click)="downloadFile(pathHra)">Download</button>
+  <select id="decide" name="decide" [(ngModel)]="response.hra">
+    <option value="accept">Accept</option>
+    <option value="decline">Decline</option>
+  </select><br><br>
+  <label for="decide">Travel: {{value.travelAmount}}&nbsp;</label>
+  <button class="btn btn-success" type="submit" (click)="downloadFile(pathTravel)">Download</button>
+  <select id="decide" name="decide" [(ngModel)]="response.travel">
+    <option value="accept">Accept</option>
+    <option value="decline">Decline</option>
+  </select><br><br>
+  <p>Comments: </p>
+  <textarea rows="4" columns="10" name="decide" [(ngModel)]="response.comments"></textarea><br><br>
+
+  <button [disabled]="submit" (click)="postResponse()">Submit</button>
+  <button class="btn btn-success" (click)="back()">Back</button>
+</div>

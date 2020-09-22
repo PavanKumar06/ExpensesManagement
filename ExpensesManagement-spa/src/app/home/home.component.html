@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <h1>Expense Submission made easy</h1>
+    <p class="lead">Employees can upload their expenses while Managers can view the taxes (for approval)</p>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
+      <a href="https://www.incometaxindia.gov.in/pages/tutorials.aspx" class="btn btn-info btn-lg">Learn more about Expense Submissions</a>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+</div>

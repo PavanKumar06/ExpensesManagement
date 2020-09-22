@@ -1,0 +1,30 @@
+<form #emloyeeForm='ngForm' *ngIf="!toggle" (ngSubmit)="uploadTax()">
+<div>
+  <input type="number" required name="foodamount" [(ngModel)]="model.foodamount" placeholder="Food Amount">
+</div>
+
+<div>
+  <input type="number" required name="fuelamount" [(ngModel)]="model.fuelamount" placeholder="Fuel Amount">
+</div>
+
+<div>
+  <input type="number" required name="hraamount" [(ngModel)]="model.hraamount" placeholder="Hra Amount">
+</div>
+
+<div>
+  <input type="number" required name="travelamount" [(ngModel)]="model.travelamount" placeholder="Travel Amount">
+</div>
+
+<input type="file" required #File (change)="handleFileInput(File.files)" multiple>
+<button class="btn btn-success mr-2" type="submit">Upload</button>
+<button class="btn btn-success mr-2" (click)="getResponse()">Response</button>
+</form>
+
+<div *ngIf="toggle">
+  <p>Food Exemption: {{response.food}}</p>
+  <p>Fuel Exemption: {{response.fuel}}</p>
+  <p>HRA Exemption: {{response.hra}}</p>
+  <p>Travel Exemption: {{response.travel}}</p>
+  <p>Comments: {{response.comments}}</p>
+  <button class="btn btn-success" (click)="back()">Back</button>
+</div>
